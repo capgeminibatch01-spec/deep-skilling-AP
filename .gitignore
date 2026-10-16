@@ -1,0 +1,10 @@
+# Real credentials are generated at build time — never commit them.
+js/config.js
+
+node_modules/
+.vercel/
+.env
+.env.*
+.DS_Store
+*.log
+supabase/.temp/

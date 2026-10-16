@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a2350">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Skilling Training - Admin</title>
+<link rel="icon" type="image/png" href="images\faviconlogo.jpg">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<section class="ds-login-wrap" id="loginView">
+  <div class="ds-card ds-login-card">
+    <div class="text-center mb-4">
+      <div class="ds-stat-icon solid mx-auto mb-3"><i class="bi bi-person-lock"></i></div>
+      <h1 class="h4 fw-bold mb-1" style="color:var(--ds-900)">Admin Login</h1>
+      <p class="ds-help mb-0">Authorised programme administrators only.</p>
+    </div>
+    <div class="ds-banner ds-banner-error" id="loginBanner" role="alert"><i class="bi bi-exclamation-triangle-fill"></i><span></span></div>
+    <form id="loginForm" novalidate>
+      <div class="ds-field" data-field="login_email">
+        <label class="ds-label" for="login_email">Email</label>
+        <input type="email" class="form-control" id="login_email" autocomplete="username" required>
+        <div class="ds-error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+      </div>
+      <div class="ds-field" data-field="login_password">
+        <label class="ds-label" for="login_password">Password</label>
+        <input type="password" class="form-control" id="login_password" autocomplete="current-password" required>
+        <div class="ds-error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+      </div>
+      <button type="submit" class="btn btn-ds w-100 mt-2" id="loginBtn">
+        <span class="ds-spinner d-none" id="loginSpinner" aria-hidden="true"></span>
+        <span id="loginLabel">Sign in</span>
+      </button>
+    </form>
+    <p class="text-center mt-4 mb-0">
+      <a href="index.html" class="ds-help text-decoration-none">
+        <i class="bi bi-arrow-left me-1"></i>Back to registration
+      </a>
+    </p>
+  </div>
+</section>
+<!-- ================= ADMIN SHELL (post-login) ================= -->
+<div class="ds-admin-shell" id="dashboardView" hidden>
+  <aside class="ds-admin-sidebar">
+    <div class="ds-admin-brand">
+      <span class="ds-admin-brand-icon"><i class="bi bi-shield-lock-fill"></i></span>
+      <div>
+        <div class="ds-admin-brand-name">Ma Foi Foundation</div>
+        <div class="ds-admin-brand-sub">Admin Dashboard</div>
+      </div>
+    </div>
+    <div class="ds-admin-nav-label">Main Menu</div>
+    <nav class="ds-admin-nav">
+            <button type="button" class="ds-admin-nav-link active" data-page="dashboardPage">
+        <i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span>
+      </button>
+      <button type="button" class="ds-admin-nav-link" data-page="registrationsPage">
+        <i class="bi bi-people-fill"></i><span>Registrations</span>
+        <span class="ds-admin-nav-count" id="navRegCount">0</span>
+      </button>
+    </nav>
+    <div class="ds-admin-nav-label">Other</div>
+    <nav class="ds-admin-nav">
+      <a href="index.html" class="ds-admin-nav-link">
+        <i class="bi bi-arrow-left-circle"></i><span>Back to Website</span>
+      </a>
+    </nav>
+    <button type="button" class="ds-admin-nav-link ds-admin-logout" id="logoutBtn">
+      <i class="bi bi-box-arrow-right"></i><span>Logout</span>
+    </button>
+  </aside>
+
+  <div class="ds-admin-main">
+    <header class="ds-admin-header">
+              <div class="ds-admin-header-crumb" id="headerCrumb"><i class="bi bi-grid-1x2-fill"></i> Dashboard</div>
+      <div class="ds-admin-header-right">
+        <span class="ds-admin-date" id="headerDate"></span>
+        <span class="ds-admin-avatar"><i class="bi bi-person-fill"></i></span>
+        <span class="ds-admin-admin-label" id="adminEmail">Admin</span>
+      </div>
+    </header>
+
+    <div class="ds-admin-content">
+      <div class="ds-banner" id="dashBanner" role="status" aria-live="polite"><i class="bi bi-info-circle-fill"></i><span></span></div>
+
+            <!-- ============ DASHBOARD PAGE ============ -->
+      <section id="dashboardPage" class="ds-admin-page">
+        <div class="ds-admin-page-head">
+          <h1>Dashboard</h1>
+          <p>Overview of student registrations</p>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon solid"><i class="bi bi-people-fill"></i></div>
+              <div><div class="ds-stat-label">Total registrations</div><div class="ds-stat-value" id="statTotal">0</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon"><i class="bi bi-bar-chart-fill"></i></div>
+              <div><div class="ds-stat-label">Data Analytics</div><div class="ds-stat-value" id="statDA">0</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon"><i class="bi bi-cpu-fill"></i></div>
+              <div><div class="ds-stat-label">Artificial Intelligence</div><div class="ds-stat-value" id="statAI">0</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon"><i class="bi bi-shield-lock-fill"></i></div>
+              <div><div class="ds-stat-label">Cyber Security</div><div class="ds-stat-value" id="statCS">0</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-3 mb-4">
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon"><i class="bi bi-gender-ambiguous"></i></div>
+              <div><div class="ds-stat-label">Female</div><div class="ds-stat-value" id="statFemale">0</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon"><i class="bi bi-person-fill"></i></div>
+              <div><div class="ds-stat-label">Male</div><div class="ds-stat-value" id="statMale">0</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon"><i class="bi bi-cash-coin"></i></div>
+              <div><div class="ds-stat-label">EWS eligible (Yes)</div><div class="ds-stat-value" id="statEws">0</div></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="ds-stat">
+              <div class="ds-stat-icon"><i class="bi bi-universal-access"></i></div>
+              <div><div class="ds-stat-label">PWD registrations</div><div class="ds-stat-value" id="statPwd">0</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-lg-7">
+            <div class="ds-card">
+              <div class="ds-admin-panel-head">Recent Registrations</div>
+              <div id="recentList" class="ds-admin-recent-list"></div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="ds-card">
+              <div class="ds-admin-panel-head">Top States</div>
+              <div id="topStatesList" class="ds-admin-bar-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <!-- ============ REGISTRATIONS PAGE ============ -->
+      <section id="registrationsPage" class="ds-admin-page" hidden>
+        <div class="ds-admin-page-head-row">
+          <div>
+            <h1>All Registrations</h1>
+            <p>Search, filter and manage all student registrations</p>
+          </div>
+                    <button class="btn btn-ds btn-ds-sm" id="excelBtn" type="button">
+            <i class="bi bi-file-earmark-spreadsheet me-1"></i>Download Excel
+          </button>
+        </div>
+
+        <div class="ds-admin-filterbar">
+          <div class="ds-admin-search">
+            <i class="bi bi-search"></i>
+            <input type="search" id="searchInput" placeholder="Search by name, email or contact number">
+          </div>
+          <select class="form-select ds-admin-filter" id="courseFilter">
+            <option value="">All Trainings</option>
+            <option>Data Analytics</option>
+            <option>Artificial Intelligence</option>
+            <option>Cyber Security</option>
+            <option>BFSI</option>
+          </select>
+          <select class="form-select ds-admin-filter" id="educationFilter">
+            <option value="">All Education</option>
+            <option>1-Not completed formal education</option>
+            <option>2-Completed 12th</option>
+            <option>3-Diploma/ITI</option>
+            <option>4-Graduation</option>
+            <option>5-Post Graduation &amp; above</option>
+            <option>6-None of the above</option>
+          </select>
+          <select class="form-select ds-admin-filter" id="stateFilter">
+            <option value="">All Locations</option>
+          </select>
+          <select class="form-select ds-admin-filter" id="trainingCentreFilter">
+            <option value="">All Training Centres</option>
+            <option>Guntur, Andhra Pradesh</option>
+            <option>Vijayawada, Andhra Pradesh</option>
+            <option>Vizag, Andhra Pradesh</option>
+          </select>
+          <input type="date" class="form-control ds-admin-filter" id="dateFilter" aria-label="Filter by registration date">
+          <button class="ds-admin-clear" id="clearFiltersBtn" type="button">
+            <i class="bi bi-x-circle"></i> Clear
+          </button>
+        </div>
+
+        <div class="ds-admin-count" id="resultCount">0 registrations found</div>
+
+        <div class="ds-card">
+          <div class="ds-table-wrap">
+            <table class="table ds-table align-middle">
+              <thead>
+                <tr>
+                  <th>Ma Foi ID</th>
+                  <th>Type of Unique ID</th>
+                  <th>Id Proof</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Date of Birth</th>
+                  <th>Gender</th>
+                  <th>Current State of Living</th>
+                  <th>District</th>
+                  <th>Contact Number</th>
+                  <th>Email</th>
+                  <th>EWS</th>
+                  <th>Training Centre Preference</th>
+                  <th>Last Completed Education</th>
+                  <th>Degree / Specialization</th>
+                  <th>Annual Income</th>
+                  <th>Occupation</th>
+                  <th>Institution</th>
+                  <th>Domain Course</th>
+                  <th>PWD</th>
+                  <th>Parent Name</th>
+                  <th>Alternative Contact Number</th>
+                  <th>Social Category</th>
+                                    <th>Created Date</th>
+                  <th>10th Marksheet</th>
+                  <th>12th Marksheet</th>
+                  <th>Degree Marksheet</th>
+                  <th>Diploma or ITI Marksheet</th>
+                  <th>EWS Certificate</th>
+                  <th>PWD Certificate</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+          <div class="ds-empty" id="emptyState" hidden>
+            <i class="bi bi-inbox"></i>
+            <div id="emptyText">No registrations yet.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DELETE MODAL ================= -->
+<div class="modal fade" id="deleteModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="deleteModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalTitle">Delete Registration?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseX"></button>
+      </div>
+      <div class="modal-body">
+        <dl class="ds-confirm-list mb-3">
+          <dt>Ma Foi ID</dt><dd id="delMafoi">—</dd>
+          <dt>Student name</dt><dd id="delName">—</dd>
+          <dt>Email</dt><dd id="delEmail">—</dd>
+        </dl>
+        <p class="mb-0" style="font-size:.9rem;color:var(--ds-muted)">
+          This registration and its documents will be permanently deleted. Registration IDs of
+          all other students stay exactly as they are, and a deleted ID is never reused.
+        </p>
+        <div class="ds-banner ds-banner-error mt-3" id="modalBanner" role="alert">
+          <i class="bi bi-exclamation-triangle-fill"></i><span></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ds-outline" data-bs-dismiss="modal" id="cancelDeleteBtn">Cancel</button>
+        <button type="button" class="btn btn-ds" id="confirmDeleteBtn" style="min-height:auto;padding:.6rem 1.15rem">
+          <span class="ds-spinner d-none" id="deleteSpinner" aria-hidden="true"></span>
+          <span id="deleteLabel"><i class="bi bi-trash me-1"></i>Delete</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/excel.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

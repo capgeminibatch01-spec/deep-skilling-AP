@@ -1,0 +1,12 @@
+# Minimal Supabase CLI config for Edge Function deployment.
+project_id = "deep-skilling-training"
+
+[functions.register]
+# Public endpoint: students are not signed in. Every input is validated
+# server-side and the service-role key never leaves the function.
+verify_jwt = false
+
+[functions.admin-delete-reindex]
+# The caller's JWT is verified explicitly inside the function so that
+# both legacy anon keys and the newer publishable keys work.
+verify_jwt = false

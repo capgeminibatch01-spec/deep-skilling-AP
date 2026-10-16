@@ -1,0 +1,11 @@
+{
+  "name": "deep-skilling-training",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deep Skilling Training — student mobilization and enrolment registration platform.",
+  "scripts": {
+    "build": "node scripts/generate-config.js",
+    "dev": "node scripts/generate-config.js && npx --yes serve . -l 3000"
+  },
+  "engines": { "node": ">=18" }
+}

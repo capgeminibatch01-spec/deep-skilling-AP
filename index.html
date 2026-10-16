@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a2350">
+<meta name="description" content="Deep Skilling Training — student mobilization and enrolment registration.">
+<meta name="robots" content="noindex">
+<title>Deep Skilling Training - TMF</title>
+<link rel="icon" type="image/png" href="images\faviconlogo.jpg">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar ds-navbar">
+  <div class="container ds-shell px-3 px-lg-4">
+    <span class="navbar-brand mb-0">
+      <span class="ds-brand-logo"><img src="images/mafoi_logo.png" alt="The Ma Foi Foundation"></span>
+    </span>
+    <a href="#sectionMobilization" class="btn ds-nav-cta">Get Started <i class="bi bi-arrow-right"></i></a>
+  </div>
+</nav>
+
+<!-- ================= STICKY PROGRESS ================= -->
+<div class="ds-progress">
+  <div class="container ds-shell">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <span class="ds-progress-label" id="progressSection">Section 1 of 2 · Mobilization</span>
+      <span class="ds-progress-label" id="progressPercent">0%</span>
+    </div>
+    <div class="ds-progress-track" role="progressbar" aria-label="Form completion"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressRole">
+      <div class="ds-progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="ds-hero">
+  <div class="container ds-shell">
+    <span class="ds-pill"><i class="bi bi-shield-check"></i> CSR Skilling Programme</span>
+    <h1>Deep Skilling Training Registration</h1>
+    <p>Complete both sections below to register. Keep your ID proof, education document and
+       EWS certificate ready before you begin — all fields marked <strong>*</strong> are required.</p>
+  </div>
+</header>
+
+<div class="ds-stepper">
+  <div class="step active"><span class="dot">1</span>Mobilization</div>
+  <div class="line"></div>
+  <div class="step"><span class="dot">2</span>Enrolment</div>
+</div>
+
+<main class="container ds-shell py-4">
+
+  <!-- maintenance / global messages -->
+  <div class="ds-banner" id="maintenanceBanner" role="status" aria-live="polite">
+    <i class="bi bi-hourglass-split"></i>
+    <span id="maintenanceText">Updating registrations. Please wait...</span>
+  </div>
+
+  <div class="ds-banner ds-banner-error" id="formBanner" role="alert" aria-live="assertive">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    <span id="formBannerText"></span>
+  </div>
+
+  <form id="registrationForm" novalidate autocomplete="on">
+
+    <!-- ========================================================== -->
+    <!-- SECTION 1 — MOBILIZATION                                    -->
+    <!-- ========================================================== -->
+    <section class="ds-card mb-4" id="sectionMobilization">
+      <div class="ds-section-head">
+        <span class="ds-section-num">1</span>
+        <div>
+          <h2>Mobilization</h2>
+          <p class="ds-section-desc">Beneficiary identification and basic demographic details captured at the point of mobilization.</p>
+        </div>
+      </div>
+
+      <div class="ds-section-body">
+        <div class="row">
+
+          <!-- 1. Type of unique ID -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="unique_id_type">
+              <label class="ds-label" for="unique_id_type">Type of unique ID<span class="ds-req">*</span></label>
+                            <select class="form-select" id="unique_id_type" name="unique_id_type"
+                      aria-describedby="unique_id_type_error" required>
+                <option value="">Select an option</option>
+                <option>10th Marksheet</option>
+<option>12th Marksheet</option>
+<option>Degree Marksheet</option>
+              </select>
+              <div class="ds-error" id="unique_id_type_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 2. Id proof -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="id_proof">
+              <label class="ds-label" for="id_proof">Id proof<span class="ds-req">*</span></label>
+                            <span class="ds-help" id="id_proof_help">As printed on the document selected above.</span>
+              <input type="text" class="form-control" id="id_proof" name="id_proof"
+                     placeholder="e.g. Roll / Register Number" autocomplete="off"
+                     aria-describedby="id_proof_help id_proof_error" required>
+              <div class="ds-error" id="id_proof_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 3. First Name -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="first_name">
+              <label class="ds-label" for="first_name">First Name<span class="ds-req">*</span></label>
+              <span class="ds-help" id="first_name_help">Exactly as it appears on the ID proof.</span>
+              <input type="text" class="form-control" id="first_name" name="first_name"
+                     autocomplete="given-name" aria-describedby="first_name_help first_name_error" required>
+              <div class="ds-error" id="first_name_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 4. Last Name -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="last_name">
+              <label class="ds-label" for="last_name">Last Name<span class="ds-req">*</span></label>
+              <span class="ds-help" id="last_name_help">Exactly as it appears on the ID proof</span>
+              <input type="text" class="form-control" id="last_name" name="last_name"
+                     autocomplete="family-name" aria-describedby="last_name_help last_name_error" required>
+              <div class="ds-error" id="last_name_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 5. Date of Birth -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="date_of_birth">
+              <label class="ds-label" for="date_of_birth">Date of Birth<span class="ds-req">*</span></label>
+              <span class="ds-help" id="date_of_birth_help">As per ID Proof</span>
+              <input type="date" class="form-control" id="date_of_birth" name="date_of_birth"
+                     autocomplete="bday" aria-describedby="date_of_birth_help date_of_birth_error" required>
+              <div class="ds-error" id="date_of_birth_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 6. Gender -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="gender">
+              <label class="ds-label" for="gender">Gender<span class="ds-req">*</span></label>
+              <select class="form-select" id="gender" name="gender" aria-describedby="gender_error" required>
+                <option value="">Select an option</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Third Gender</option>
+                <option>Prefer Not to Say</option>
+              </select>
+              <div class="ds-error" id="gender_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+                    <!-- 7. Current State of Living -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="beneficiary_state">
+              <label class="ds-label" for="beneficiary_state">Current State of Living<span class="ds-req">*</span></label>
+              <div class="ds-combobox" id="stateCombobox">
+                <input type="text" class="form-control" id="beneficiary_state" name="beneficiary_state"
+                       autocomplete="off" placeholder="Start typing a state or UT"
+                       aria-describedby="beneficiary_state_error" aria-expanded="false" role="combobox" required>
+                <ul class="ds-combobox-list" id="beneficiary_state_list" role="listbox" hidden></ul>
+              </div>
+              <div class="ds-error" id="beneficiary_state_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+          <!-- 8. District (Current) -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="district">
+              <label class="ds-label" for="district">District (Current)<span class="ds-req">*</span></label>
+              <div class="ds-combobox" id="districtCombobox">
+                <input type="text" class="form-control" id="district" name="district"
+                       autocomplete="off" placeholder="Select a state first"
+                       aria-describedby="district_error" aria-expanded="false" role="combobox" disabled required>
+                <ul class="ds-combobox-list" id="district_list" role="listbox" hidden></ul>
+              </div>
+              <div class="ds-error" id="district_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 9. Contact number -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="contact_number">
+              <label class="ds-label" for="contact_number">Contact number<span class="ds-req">*</span></label>
+              <input type="tel" inputmode="numeric" class="form-control" id="contact_number" name="contact_number"
+                     placeholder="Enter your contact number" autocomplete="tel-national"
+                     aria-describedby="contact_number_help contact_number_error" required>
+              <div class="ds-error" id="contact_number_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 10. Email id -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="email">
+              <label class="ds-label" for="email">Email id<span class="ds-req">*</span></label>
+              <input type="email" class="form-control" id="email" name="email"
+                     placeholder="example@gmail.com" autocomplete="email" spellcheck="false"
+                     aria-describedby="email_help email_error" required>
+              <div class="ds-error" id="email_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 11. EWS category -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="ews_category">
+              <label class="ds-label" for="ews_category">Do you belong to EWS category? (Income below 8 Lakh per annum)<span class="ds-req">*</span></label>
+              <select class="form-select" id="ews_category" name="ews_category" aria-describedby="ews_category_error" required>
+                <option value="">Select an option</option>
+                <option>Yes - 1</option>
+                <option>No - 2</option>
+              </select>
+              <div class="ds-error" id="ews_category_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 12. Training Centre Preference -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="training_centre_preference">
+              <label class="ds-label" for="training_centre_preference">Training Centre Preference<span class="ds-req">*</span></label>
+              <select class="form-select" id="training_centre_preference" name="training_centre_preference"
+                      aria-describedby="training_centre_preference_error" required>
+                <option value="">Select an option</option>
+                <option>Guntur, Andhra Pradesh</option>
+                <option>Vijayawada, Andhra Pradesh</option>
+                <option>Vizag, Andhra Pradesh</option>
+              </select>
+              <div class="ds-error" id="training_centre_preference_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- SECTION 2 — ENROLMENT                                       -->
+    <!-- ========================================================== -->
+    <section class="ds-card mb-4" id="sectionEnrolment">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2</span>
+        <div>
+          <h2>Enrolment</h2>
+          <p class="ds-section-desc">Socio-economic profile, education, eligibility documentation, training model and batch assignment captured at enrolment.</p>
+        </div>
+      </div>
+
+      <div class="ds-section-body">
+        <div class="row">
+
+          <!-- 1. Last Completed Education -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="last_completed_education">
+              <label class="ds-label" for="last_completed_education">Last Completed Education<span class="ds-req">*</span></label>
+              <select class="form-select" id="last_completed_education" name="last_completed_education"
+                      aria-describedby="last_completed_education_error" required>
+                <option value="">Select an option</option>
+                <option>1-Not completed formal education</option>
+                <option>2-Completed 12th</option>
+                <option>3-Diploma/ITI</option>
+                <option>4-Graduation</option>
+                <option>5-Post Graduation &amp; above</option>
+                <option>6-None of the above</option>
+              </select>
+              <div class="ds-error" id="last_completed_education_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+                    <!-- 2. Degree / Specialization (hidden when "Not completed formal education") -->
+          <div class="col-md-6">
+            <div id="degreeWrap">
+              <div class="ds-field" data-field="degree_specialization">
+                <label class="ds-label" for="degree_specialization">Degree / Specialization<span class="ds-req">*</span></label>
+                <select class="form-select" id="degree_specialization" name="degree_specialization"
+                        aria-describedby="degree_specialization_error" required>
+                  <option value="">Select an option</option>
+                  <option>B.A.</option>
+                  <option>B.Sc.</option>
+                  <option>B.Com.</option>
+                  <option>B.Tech/B.E.</option>
+                  <option>BCA</option>
+                  <option>BBA</option>
+                  <option>M.A.</option>
+                  <option>M.Sc.</option>
+                  <option>MBA</option>
+                  <option>M.Tech</option>
+                  <option>Diploma</option>
+                  <option>ITI</option>
+                  <option>Others</option>
+                </select>
+                <div class="ds-error" id="degree_specialization_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+              </div>
+              <div class="ds-conditional" id="degreeOtherWrap">
+                <div class="ds-field" data-field="degree_specialization_other">
+                  <label class="ds-label" for="degree_specialization_other">Please specify your Degree / Specialization<span class="ds-req">*</span></label>
+                  <input type="text" class="form-control" id="degree_specialization_other" name="degree_specialization_other"
+                         autocomplete="off" aria-describedby="degree_specialization_other_error" disabled>
+                  <div class="ds-error" id="degree_specialization_other_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 3. Supporting Documents -->
+          <div class="col-12">
+            <div id="supportingDocumentsWrap">
+              <label class="ds-label mb-2">Supporting Documents</label>
+
+              <div class="ds-field mb-3" data-field="marksheet_10th_file">
+                <label class="ds-label" for="marksheet_10th_file">10th Marksheet<span class="ds-req">*</span></label>
+                <span class="ds-help" id="marksheet_10th_file_help">PDF only, maximum 10 MB.</span>
+                <div class="ds-file-drop">
+                  <input type="file" id="marksheet_10th_file" name="marksheet_10th_file"
+                         accept=".pdf,application/pdf"
+                         aria-describedby="marksheet_10th_file_help marksheet_10th_file_error" required>
+                  <div class="ds-file-meta" id="marksheet_10th_file_meta"><i class="bi bi-paperclip"></i><span></span></div>
+                </div>
+                <div class="ds-error" id="marksheet_10th_file_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+              </div>
+
+              <div class="ds-field mb-3" data-field="marksheet_12th_file">
+                <label class="ds-label" for="marksheet_12th_file">12th Marksheet<span class="ds-req">*</span></label>
+                <span class="ds-help" id="marksheet_12th_file_help">PDF only, maximum 10 MB.</span>
+                <div class="ds-file-drop">
+                  <input type="file" id="marksheet_12th_file" name="marksheet_12th_file"
+                         accept=".pdf,application/pdf"
+                         aria-describedby="marksheet_12th_file_help marksheet_12th_file_error" required>
+                  <div class="ds-file-meta" id="marksheet_12th_file_meta"><i class="bi bi-paperclip"></i><span></span></div>
+                </div>
+                <div class="ds-error" id="marksheet_12th_file_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+              </div>
+
+              <div class="ds-field mb-3" data-field="marksheet_degree_file">
+                <label class="ds-label" for="marksheet_degree_file">Degree Marksheet</label>
+                <span class="ds-help" id="marksheet_degree_file_help">PDF only, maximum 10 MB.</span>
+                <div class="ds-file-drop">
+                  <input type="file" id="marksheet_degree_file" name="marksheet_degree_file"
+                         accept=".pdf,application/pdf"
+                         aria-describedby="marksheet_degree_file_help marksheet_degree_file_error">
+                  <div class="ds-file-meta" id="marksheet_degree_file_meta"><i class="bi bi-paperclip"></i><span></span></div>
+                </div>
+                <div class="ds-error" id="marksheet_degree_file_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+              </div>
+
+              <div class="ds-field" data-field="marksheet_diploma_iti_file">
+                <label class="ds-label" for="marksheet_diploma_iti_file">Diploma or ITI Marksheet</label>
+                <span class="ds-help" id="marksheet_diploma_iti_file_help">PDF only, maximum 10 MB.</span>
+                <div class="ds-file-drop">
+                  <input type="file" id="marksheet_diploma_iti_file" name="marksheet_diploma_iti_file"
+                         accept=".pdf,application/pdf"
+                         aria-describedby="marksheet_diploma_iti_file_help marksheet_diploma_iti_file_error">
+                  <div class="ds-file-meta" id="marksheet_diploma_iti_file_meta"><i class="bi bi-paperclip"></i><span></span></div>
+                </div>
+                <div class="ds-error" id="marksheet_diploma_iti_file_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Annual income -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="annual_income">
+              <label class="ds-label" for="annual_income">Annual income<span class="ds-req">*</span></label>
+              <span class="ds-help" id="annual_income_help">Annual household income bracket of the family.</span>
+              <select class="form-select" id="annual_income" name="annual_income"
+                      aria-describedby="annual_income_help annual_income_error" required>
+                <option value="">Select an option</option>
+                <option>1-Less than 99,999</option>
+                <option>2-1 to 2.99 Lakh</option>
+                <option>3-3 to 4.99 Lakh</option>
+                <option>4-5 to 7.99 Lakh</option>
+                <option>5-Above 8 Lakh</option>
+              </select>
+              <div class="ds-error" id="annual_income_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 5. Occupation -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="occupation">
+              <label class="ds-label" for="occupation">Occupation<span class="ds-req">*</span></label>
+              <select class="form-select" id="occupation" name="occupation" aria-describedby="occupation_error" required>
+                <option value="">Select an option</option>
+                <option>1-Employed</option>
+                <option>2-Unemployed</option>
+                <option>3-Entrepreneur</option>
+                <option>4-Student</option>
+                <option>5-Unpaid work</option>
+              </select>
+              <div class="ds-error" id="occupation_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 6. If Student, Type of Institution (conditional) -->
+          <div class="col-md-6">
+            <div class="ds-conditional" id="institutionWrap">
+              <div class="ds-field" data-field="institution_type">
+                <label class="ds-label" for="institution_type">If Student, Type of Institution<span class="ds-req">*</span></label>
+                <span class="ds-help" id="institution_type_help">Applicable only when Occupation is 4-Student.</span>
+                <select class="form-select" id="institution_type" name="institution_type"
+                        aria-describedby="institution_type_help institution_type_error" disabled>
+                  <option value="">Select an option</option>
+                  <option>1-School</option>
+                  <option>2-University</option>
+                  <option>3-ITI</option>
+                  <option>4-NGO Centre</option>
+                  <option>5-None</option>
+                </select>
+                <div class="ds-error" id="institution_type_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. EWS Certification -->
+          <div class="col-12">
+            <div class="ds-field" data-field="ews_file">
+              <label class="ds-label" for="ews_file">EWS Certification<span class="ds-req">*</span></label>
+              <span class="ds-help" id="ews_file_help">Upload Income Certificate or Ration Card. Only PDF's</span>
+              <div class="ds-file-drop">
+                <input type="file" id="ews_file" name="ews_file"
+                       accept=".pdf,.jpg,.jpeg,application/pdf,image/jpeg"
+                       aria-describedby="ews_file_help ews_file_error" required>
+                <div class="ds-file-meta" id="ews_file_meta"><i class="bi bi-paperclip"></i><span></span></div>
+              </div>
+              <div class="ds-error" id="ews_file_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 8. Domain course -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="domain_course">
+              <label class="ds-label" for="domain_course">Domain course<span class="ds-req">*</span></label>
+              <select class="form-select" id="domain_course" name="domain_course" aria-describedby="domain_course_error" required>
+                <option value="">Select an option</option>
+                <option>Data Analytics</option>
+                <option>Artificial Intelligence</option>
+                <option>Cyber Security</option>
+                <option>BFSI</option>
+              </select>
+              <div class="ds-error" id="domain_course_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 9. Are you a person with Disability? -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="pwd_status">
+              <label class="ds-label" for="pwd_status">Are you a person with Disability?<span class="ds-req">*</span></label>
+              <select class="form-select" id="pwd_status" name="pwd_status" aria-describedby="pwd_status_error" required>
+                <option value="">Select an option</option>
+                <option>Yes - 1</option>
+                <option>No - 2</option>
+              </select>
+              <div class="ds-error" id="pwd_status_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 10. PWD Certificate (conditional) -->
+          <div class="col-12">
+            <div class="ds-conditional" id="pwdWrap">
+              <div class="ds-field" data-field="pwd_file">
+                <label class="ds-label" for="pwd_file">PWD Certificate<span class="ds-req">*</span></label>
+                <span class="ds-help" id="pwd_file_help">Required because you selected "Yes - 1". PDF or JPG, maximum 10 MB.</span>
+                <div class="ds-file-drop">
+                  <input type="file" id="pwd_file" name="pwd_file"
+                         accept=".pdf,.jpg,.jpeg,application/pdf,image/jpeg"
+                         aria-describedby="pwd_file_help pwd_file_error" disabled>
+                  <div class="ds-file-meta" id="pwd_file_meta"><i class="bi bi-paperclip"></i><span></span></div>
+                </div>
+                <div class="ds-error" id="pwd_file_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11. Name of parent -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="parent_name">
+              <label class="ds-label" for="parent_name">Name of the Parent<span class="ds-req">*</span></label>
+              <span class="ds-help" id="parent_name_help">Enter both father's and mother's names.</span>
+              <input type="text" class="form-control" id="parent_name" name="parent_name"
+                     placeholder="Enter both father's and mother's names" autocomplete="off"
+                     aria-describedby="parent_name_help parent_name_error" required>
+              <div class="ds-error" id="parent_name_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 12. Alternative Contact Number -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="alternative_contact_number">
+              <label class="ds-label" for="alternative_contact_number">Alternative Contact Number<span class="ds-req">*</span></label>
+              <span class="ds-help" id="alternative_contact_number_help">exactly 10-digit mobile number</span>
+              <input type="tel" inputmode="numeric" class="form-control" id="alternative_contact_number"
+                     name="alternative_contact_number" placeholder="Enter your alternative contact number" autocomplete="off"
+                     aria-describedby="alternative_contact_number_help alternative_contact_number_error" required>
+              <div class="ds-error" id="alternative_contact_number_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+          <!-- 13. Social Category -->
+          <div class="col-md-6">
+            <div class="ds-field" data-field="social_category">
+              <label class="ds-label" for="social_category">Social Category<span class="ds-req">*</span></label>
+              <select class="form-select" id="social_category" name="social_category" aria-describedby="social_category_error" required>
+                <option value="">Select an option</option>
+                <option>SC-1</option>
+                <option>ST-2</option>
+                <option>OBC-3</option>
+                <option>Gen-4</option>
+                <option>Others - 5</option>
+              </select>
+              <div class="ds-error" id="social_category_error" role="alert"><i class="bi bi-exclamation-circle"></i><span></span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SUBMIT ================= -->
+    <div class="ds-card">
+      <div class="ds-section-body text-center">
+        <p class="ds-help mb-3">
+          By submitting, you confirm that the details and documents provided are accurate and
+          belong to you. You will receive a Ma Foi ID on the next screen — please save it.
+        </p>
+        <button type="submit" class="btn btn-ds btn-ds-sm px-5" id="submitBtn">
+          <span id="submitSpinner" class="ds-spinner d-none" aria-hidden="true"></span>
+          <span id="submitLabel"><i class="bi bi-send-fill me-2"></i>Submit Registration</span>
+        </button>
+        <div class="ds-help mt-2" id="submitStatus" aria-live="polite"></div>
+      </div>
+    </div>
+
+  </form>
+
+  <p class="ds-footer">A CSR initiative by The Ma Foi Foundation · Registrations processed securely.</p>
+</main>
+
+<!-- ================= SUCCESS OVERLAY ================= -->
+<div class="ds-success" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+  <div class="ds-success-card">
+    <div class="ds-check-wrap">
+      <span class="ds-check-ring"></span>
+      <svg class="ds-check-svg" viewBox="0 0 118 118" aria-hidden="true">
+        <circle class="ds-check-disc" cx="59" cy="59" r="52"></circle>
+        <path class="ds-check-mark" d="M38 60.5 L52.5 75 L81 44"></path>
+      </svg>
+    </div>
+    <h2 id="successTitle">Registration Successful!</h2>
+    <p class="ds-success-sub">Your details and documents have been recorded.</p>
+    <div class="ds-id-box">
+      <div class="ds-id-label">Your Ma Foi ID</div>
+      <div class="ds-id-value" id="successMafoiId">—</div>
+    </div>
+    <div class="ds-save-note">
+      <i class="bi bi-bookmark-star-fill me-1"></i>Please save your Ma Foi ID for future reference.
+    </div>
+    <button type="button" class="btn btn-ds btn-ds-sm mt-3" id="submitAnotherBtn">
+      <i class="bi bi-arrow-repeat me-2"></i>Submit Another Response
+    </button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/validation.js"></script>
+<script src="js/registration.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
